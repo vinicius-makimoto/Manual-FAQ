@@ -1,0 +1,9 @@
+streamlit>=1.37
+pandas
+openai
+python-dotenv
+requests
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client

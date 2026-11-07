@@ -1,0 +1,14 @@
+.stApp { background: #f5f7fb; color: #172538; }
+[data-testid="stSidebar"] { background: #10263c; }
+[data-testid="stSidebar"] * { color: #edf4fa; }
+[data-testid="stSidebar"] code { color: #d7e8f5; }
+.brand-mark { color: #78dfcf; font-size: .72rem; font-weight: 800; letter-spacing: .16em; }
+.eyebrow { color: #137c72; font-size: .75rem; font-weight: 800; letter-spacing: .14em; }
+.model-pill { box-sizing: border-box; width: 100%; padding: 14px 16px; border-radius: 12px; background: #f4f6f8; color: #162b40; font-weight: 700; }
+[data-testid="stMetric"] { background: white; border: 1px solid #e5ebf1; border-radius: 14px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(16,38,60,.04); }
+[data-testid="stMetricLabel"] { color: #617185; }
+[data-testid="stMetricValue"] { color: #10263c; }
+[data-testid="stVerticalBlockBorderWrapper"] { border-radius: 14px; border-color: #e3eaf1; background: white; }
+[data-testid="stTab"] { font-weight: 650; }
+div.stButton > button { border-radius: 9px; }
+div.stButton > button[kind="primary"] { background: #137c72; border-color: #137c72; }
