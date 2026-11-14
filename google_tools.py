@@ -1,5 +1,7 @@
 """Autenticação OAuth e integrações formatadas com Google Sheets e Docs."""
 
+import streamlit as st
+from google.oauth2 import service_account
 import os
 import re
 from datetime import datetime
