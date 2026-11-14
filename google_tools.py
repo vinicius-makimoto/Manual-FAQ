@@ -16,25 +16,22 @@ SCOPES = [
 BASE_DIR = Path(__file__).parent
 
 
+
 def autenticar_google():
-    token_path = BASE_DIR / "token.json"
-    credentials_path = BASE_DIR / "credentials.json"
-    # Load the scopes actually stored in the token; passing SCOPES here would
-    # override the saved scope list and could falsely make an old Sheets-only
-    # token look authorized for Docs.
-    credenciais = Credentials.from_authorized_user_file(str(token_path)) if token_path.exists() else None
-    if credenciais and not credenciais.has_scopes(SCOPES):
-        token_path.unlink(missing_ok=True)
-        credenciais = None
-    if credenciais and credenciais.expired and credenciais.refresh_token:
-        credenciais.refresh(Request())
-    if not credenciais or not credenciais.valid:
-        if not credentials_path.exists():
-            raise FileNotFoundError("Coloque credentials.json (OAuth Desktop) na pasta do projeto.")
-        fluxo = InstalledAppFlow.from_client_secrets_file(str(credentials_path), SCOPES)
-        credenciais = fluxo.run_local_server(port=0)
-    token_path.write_text(credenciais.to_json(), encoding="utf-8")
+    """Autentica usando os Secrets do Streamlit Cloud."""
+    if "gcp_service_account" not in st.secrets:
+        raise RuntimeError(
+            "Configure [gcp_service_account] nos Secrets do Streamlit."
+        )
+
+    dados = dict(st.secrets["gcp_service_account"])
+    credenciais = service_account.Credentials.from_service_account_info(
+        dados,
+        scopes=SCOPES
+    )
+
     return credenciais
+
 
 
 def _texto_sem_markdown(texto: str) -> str:
