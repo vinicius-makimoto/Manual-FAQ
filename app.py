@@ -103,8 +103,8 @@ with st.sidebar:
     st.divider()
     for label, configured in (
         ("IA Groq / GPT-OSS", bool(os.getenv("GROQ_API_KEY"))),
-        ("Google Sheets", bool(SHEETS_ID and Path("credentials.json").exists())),
-        ("Google Docs", bool(os.getenv("GOOGLE_DOCS_ID") and Path("credentials.json").exists())),
+        ("Google Sheets", bool(SHEETS_ID and "gcp_service_account" in st.secrets)),
+        ("Google Docs", bool(os.getenv("GOOGLE_DOCS_ID") and "gcp_service_account" in st.secrets)),
     ):
         st.write(("🟢 " if configured else "⚪ ") + label)
     st.caption("Modelo de IA")
